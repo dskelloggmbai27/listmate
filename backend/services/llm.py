@@ -12,9 +12,15 @@ class LLMClient:
         self.provider = provider
         self.model = model
         if provider == 'anthropic':
-            self.client = anthropic.Anthropic(api_key=os.environ['ANTHROPIC_API_KEY'])
+            api_key = os.environ.get('ANTHROPIC_API_KEY')
+            if not api_key or api_key.startswith('sk-ant-your'):
+                raise ValueError('ANTHROPIC_API_KEY is not configured. Add it to backend/.env')
+            self.client = anthropic.Anthropic(api_key=api_key)
         elif provider == 'openai':
-            self.client = openai.OpenAI(api_key=os.environ.get('OPENAI_API_KEY', ''))
+            api_key = os.environ.get('OPENAI_API_KEY')
+            if not api_key or api_key.startswith('sk-your'):
+                raise ValueError('OPENAI_API_KEY is not configured. Add it to backend/.env')
+            self.client = openai.OpenAI(api_key=api_key)
         else:
             raise ValueError(f'Unknown provider: {provider}')
 
@@ -68,10 +74,11 @@ class LLMClient:
 
 
 def parse_json_response(text: str) -> dict:
-    """Strip markdown fences and parse JSON. Raises ValueError on failure."""
+    """Extract and parse JSON from LLM response. Tolerates markdown fences and prose."""
     text = text.strip()
-    if text.startswith('```'):
-        lines = text.split('\n')
-        # Remove first line (```json or ```) and last line (```)
-        text = '\n'.join(lines[1:-1])
-    return json.loads(text.strip())
+    # Find the outermost JSON object boundaries
+    start = text.find('{')
+    end = text.rfind('}')
+    if start == -1 or end == -1 or end <= start:
+        raise ValueError(f'No JSON object found in response: {text[:200]}')
+    return json.loads(text[start:end + 1])

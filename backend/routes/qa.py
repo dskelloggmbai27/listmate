@@ -1,3 +1,4 @@
+import json
 import os
 from pathlib import Path
 
@@ -37,7 +38,7 @@ async def run_qa(req: QARequest):
         .replace('{title}', listing.get('title', ''))
         .replace('{bullets}', bullets_str)
         .replace('{description}', listing.get('description', ''))
-        .replace('{attributes}', str(listing.get('attributes', {})))
+        .replace('{attributes}', json.dumps(listing.get('attributes', {})))
     )
 
     try:
@@ -45,7 +46,10 @@ async def run_qa(req: QARequest):
         text = client.generate(system, user_text, req.images[:3])
         llm_result = parse_json_response(text)
         llm_issues = llm_result.get('issues', [])
-        llm_score = llm_result.get('risk_score', 10)
+        try:
+            llm_score = int(llm_result.get('risk_score', 10))
+        except (TypeError, ValueError):
+            llm_score = 10
 
         # Merge rule issues (dedup by field)
         existing_fields = {i['field'] for i in llm_issues}

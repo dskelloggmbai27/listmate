@@ -22,7 +22,7 @@ def rule_based_qa(listing: dict) -> tuple[list[dict], float]:
 
     # Missing required fields
     for field in REQUIRED_FIELDS:
-        val = attrs.get(field, '').strip()
+        val = str(attrs.get(field) or '').strip()
         if not val or val.lower() in ('', 'n/a', 'unknown'):
             issues.append({
                 'field': f'attributes.{field}',

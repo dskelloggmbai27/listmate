@@ -65,11 +65,10 @@ async def generate_listing(
     user_tmpl = (PROMPTS_DIR / 'listing_user.txt').read_text()
     user_text = user_tmpl.replace('{marketplace}', marketplace).replace('{notes}', notes)
 
-    client = LLMClient(provider=provider, model=model)
-
     if best_of_n.lower() == 'true':
         system_b = (PROMPTS_DIR / 'listing_system_conversion.txt').read_text()
         try:
+            client = LLMClient(provider=provider, model=model)
             text_a = client.generate(system_a, user_text, images_b64)
             result_a = parse_json_response(text_a)
         except Exception as e:
@@ -77,6 +76,7 @@ async def generate_listing(
             result_a = FALLBACK_RESPONSE
 
         try:
+            client = LLMClient(provider=provider, model=model)
             text_b = client.generate(system_b, user_text, images_b64)
             result_b = parse_json_response(text_b)
         except Exception as e:
@@ -101,6 +101,7 @@ async def generate_listing(
 
     # Single model call
     try:
+        client = LLMClient(provider=provider, model=model)
         text = client.generate(system_a, user_text, images_b64)
         result = parse_json_response(text)
     except Exception as e:
