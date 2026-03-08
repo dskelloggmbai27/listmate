@@ -144,10 +144,10 @@ ListMate supports multiple model backends. Select from the Upload screen:
 | Display Name | Provider | Best For |
 |---|---|---|
 | Fine-tuned GPT 5 ✦ | OpenAI | High-volume, speed-critical sellers |
-| Post-trained Gemma 3 ✦ | Anthropic | Nuanced, story-driven categories (Etsy, Shopify) |
+| Post-trained Gemma 3 ✦ | ListMate | Specially tuned models for each categories (Etsy, Shopify) |
 | Claude Sonnet 4.6 | Anthropic | Balanced quality + speed |
 | Claude Opus 4.6 | Anthropic | Complex, high-value items |
-| GPT-4.1 | OpenAI | OpenAI-preferred workflows |
+| GPT-5.2 | OpenAI | OpenAI-preferred workflows |
 
 > **Best-of-N mode** runs the generation pass multiple times and returns the highest-scoring output — useful for hero listings where copy quality is critical.
 
