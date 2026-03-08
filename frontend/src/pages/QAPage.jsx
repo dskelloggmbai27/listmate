@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import useStore from '../store/useStore'
+import HamburgerMenu from '../components/HamburgerMenu'
 
 const ISSUE_ICONS = {
   missing: { icon: 'flag', color: 'text-primary', bg: 'bg-primary/20' },
@@ -29,7 +30,8 @@ export default function QAPage() {
           <button onClick={() => navigate('/listing')} className="flex size-10 items-center justify-center cursor-pointer">
             <span className="material-symbols-outlined">arrow_back</span>
           </button>
-          <h2 className="text-lg font-bold flex-1 text-center pr-10">QA Report & Return Risk</h2>
+          <h2 className="text-lg font-bold flex-1 text-center">QA Report & Return Risk</h2>
+          <HamburgerMenu />
         </div>
 
         <div className="flex flex-col flex-1 pb-24">

@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const BASE = import.meta.env.VITE_API_BASE ?? 'http://localhost:8000/api'
 
-export async function runQA({ listing, images, modelConfig }) {
+export async function runQA({ listing, images, modelConfig, apiKeys = {} }) {
   const imageB64 = await Promise.all(
     images.map((img) =>
       new Promise((res) => {
@@ -17,6 +17,8 @@ export async function runQA({ listing, images, modelConfig }) {
     images: imageB64,
     provider: modelConfig.provider,
     model: modelConfig.model,
+    ...(apiKeys.anthropic && { anthropic_api_key: apiKeys.anthropic }),
+    ...(apiKeys.openai    && { openai_api_key:    apiKeys.openai }),
   })
   return data
 }

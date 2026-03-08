@@ -2,10 +2,11 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useStore from '../store/useStore'
 import { runQA } from '../api/qa'
+import HamburgerMenu from '../components/HamburgerMenu'
 
 export default function ListingPage() {
   const navigate = useNavigate()
-  const { images, jobResult, updateListing, modelConfig, setQaResult } = useStore()
+  const { images, jobResult, updateListing, modelConfig, setQaResult, apiKeys } = useStore()
   const listing = jobResult?.listing ?? {
     title: '',
     bullets: ['', '', '', '', ''],
@@ -32,7 +33,7 @@ export default function ListingPage() {
   const handlePreviewQA = async () => {
     setQaLoading(true)
     try {
-      const qa = await runQA({ listing, images, modelConfig })
+      const qa = await runQA({ listing, images, modelConfig, apiKeys })
       setQaResult(qa)
     } catch (e) {
       console.error(e)
@@ -51,7 +52,7 @@ export default function ListingPage() {
             <span className="material-symbols-outlined">arrow_back</span>
           </button>
           <h2 className="text-lg font-bold flex-1 text-center">Generated Listing</h2>
-          <span className="w-10" />
+          <HamburgerMenu />
         </div>
       </header>
 

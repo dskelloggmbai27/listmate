@@ -16,6 +16,8 @@ class QARequest(BaseModel):
     images: list[str] = []
     provider: str = 'anthropic'
     model: str = 'claude-sonnet-4-6'
+    anthropic_api_key: str = ''
+    openai_api_key: str = ''
 
 
 @router.post('/qa')
@@ -41,8 +43,9 @@ async def run_qa(req: QARequest):
         .replace('{attributes}', json.dumps(listing.get('attributes', {})))
     )
 
+    key_override = (req.anthropic_api_key if req.provider == 'anthropic' else req.openai_api_key) or None
     try:
-        client = LLMClient(provider=req.provider, model=req.model)
+        client = LLMClient(provider=req.provider, model=req.model, api_key_override=key_override)
         text = client.generate(system, user_text, req.images[:3])
         llm_result = parse_json_response(text)
         llm_issues = llm_result.get('issues', [])

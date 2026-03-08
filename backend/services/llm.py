@@ -8,18 +8,18 @@ import openai
 
 
 class LLMClient:
-    def __init__(self, provider: str, model: str):
+    def __init__(self, provider: str, model: str, api_key_override: Optional[str] = None):
         self.provider = provider
         self.model = model
         if provider == 'anthropic':
-            api_key = os.environ.get('ANTHROPIC_API_KEY')
+            api_key = api_key_override or os.environ.get('ANTHROPIC_API_KEY')
             if not api_key or api_key.startswith('sk-ant-your'):
-                raise ValueError('ANTHROPIC_API_KEY is not configured. Add it to backend/.env')
+                raise ValueError('ANTHROPIC_API_KEY is not configured. Add it to backend/.env or set it in Account Settings.')
             self.client = anthropic.Anthropic(api_key=api_key)
         elif provider == 'openai':
-            api_key = os.environ.get('OPENAI_API_KEY')
+            api_key = api_key_override or os.environ.get('OPENAI_API_KEY')
             if not api_key or api_key.startswith('sk-your'):
-                raise ValueError('OPENAI_API_KEY is not configured. Add it to backend/.env')
+                raise ValueError('OPENAI_API_KEY is not configured. Add it to backend/.env or set it in Account Settings.')
             self.client = openai.OpenAI(api_key=api_key)
         else:
             raise ValueError(f'Unknown provider: {provider}')

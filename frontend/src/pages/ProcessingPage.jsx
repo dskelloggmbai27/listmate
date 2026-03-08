@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import useStore from '../store/useStore'
 import { generateListing } from '../api/generate'
+import HamburgerMenu from '../components/HamburgerMenu'
 
 const STEPS = [
   'Analyzing images',
@@ -13,7 +14,7 @@ const STEPS = [
 
 export default function ProcessingPage() {
   const navigate = useNavigate()
-  const { images, notes, marketplace, modelConfig, setJobResult } = useStore()
+  const { images, notes, marketplace, modelConfig, setJobResult, apiKeys, addToHistory } = useStore()
   const [activeStep, setActiveStep] = useState(0)
   const [error, setError] = useState(null)
   const timerRefs = useRef([])
@@ -23,9 +24,18 @@ export default function ProcessingPage() {
       setTimeout(() => setActiveStep(i + 1), (i + 1) * 3500)
     )
 
-    generateListing({ images, notes, marketplace, modelConfig })
+    generateListing({ images, notes, marketplace, modelConfig, apiKeys })
       .then((data) => {
         setJobResult(data)
+        // Add to session history
+        addToHistory({
+          id: `session-${Date.now()}`,
+          title: data.listing?.title ?? 'Untitled Listing',
+          marketplace,
+          date: new Date().toISOString().slice(0, 10),
+          riskScore: null,   // filled in after QA
+          thumbnail: images[0] ? URL.createObjectURL(images[0]) : null,
+        })
         navigate('/listing')
       })
       .catch((err) => {
@@ -45,6 +55,7 @@ export default function ProcessingPage() {
           <img src="/logo.png" alt="ListMate" className="size-10 rounded-lg" />
           <span className="text-xl font-bold tracking-tight">ListMate</span>
         </div>
+        <HamburgerMenu />
       </nav>
 
       <main className="max-w-lg mx-auto px-6 py-12 flex flex-col items-center flex-1">

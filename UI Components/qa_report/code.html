@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ListMate - QA Report</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1ddd33",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#112113",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex min-h-screen w-full max-w-md mx-auto flex-col overflow-x-hidden border-x border-primary/10">
+<!-- Header -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 sticky top-0 z-10 border-b border-primary/10">
+<div class="text-slate-900 dark:text-slate-100 flex size-10 shrink-0 items-center cursor-pointer">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-10">QA Report &amp; Return Risk</h2>
+</div>
+<div class="flex flex-col flex-1 pb-24">
+<!-- Risk Score Section -->
+<div class="flex flex-col items-center justify-center p-8 gap-6">
+<div class="relative flex items-center justify-center">
+<!-- Gauge SVG -->
+<svg class="w-48 h-48 transform -rotate-90">
+<circle class="text-primary/10" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-primary" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-dasharray="552.92" stroke-dashoffset="442.33" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center rotate-90">
+<span class="text-4xl font-bold text-slate-900 dark:text-slate-100">2/10</span>
+<span class="text-xs font-medium text-primary uppercase tracking-widest">Low Risk</span>
+</div>
+</div>
+<div class="text-center">
+<p class="text-slate-600 dark:text-slate-400 text-sm">Your listing has a high probability of success. Fixing the issues below will further reduce return risk.</p>
+</div>
+</div>
+<!-- QA Checklist Section -->
+<div class="px-4">
+<h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight mb-4">QA Checklist</h3>
+<div class="flex flex-col gap-3">
+<!-- Item 1 -->
+<div class="flex items-center gap-4 bg-primary/5 dark:bg-primary/10 p-4 rounded-xl border border-primary/20">
+<div class="flex items-center justify-center rounded-lg bg-primary/20 text-primary shrink-0 size-12">
+<span class="material-symbols-outlined">flag</span>
+</div>
+<div class="flex flex-col flex-1">
+<p class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Missing: exact dimensions</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs">Specific measurements reduce size-related returns.</p>
+</div>
+<button class="flex px-3 py-1.5 cursor-pointer items-center justify-center rounded-lg bg-primary/20 hover:bg-primary/30 text-primary text-xs font-bold transition-colors">
+                            Fix it
+                        </button>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center gap-4 bg-primary/5 dark:bg-primary/10 p-4 rounded-xl border border-primary/20">
+<div class="flex items-center justify-center rounded-lg bg-yellow-500/20 text-yellow-500 shrink-0 size-12">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div class="flex flex-col flex-1">
+<p class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Ambiguous: "standard size"</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs">Avoid vague terms; clarify actual proportions.</p>
+</div>
+<button class="flex px-3 py-1.5 cursor-pointer items-center justify-center rounded-lg bg-primary/20 hover:bg-primary/30 text-primary text-xs font-bold transition-colors">
+                            Fix it
+                        </button>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center gap-4 bg-primary/5 dark:bg-primary/10 p-4 rounded-xl border border-primary/20">
+<div class="flex items-center justify-center rounded-lg bg-yellow-500/20 text-yellow-500 shrink-0 size-12">
+<span class="material-symbols-outlined">image_not_supported</span>
+</div>
+<div class="flex flex-col flex-1">
+<p class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Image mismatch: color</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs">Color appears different in photo 2 compared to others.</p>
+</div>
+<button class="flex px-3 py-1.5 cursor-pointer items-center justify-center rounded-lg bg-primary/20 hover:bg-primary/30 text-primary text-xs font-bold transition-colors">
+                            Fix it
+                        </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Footer Action -->
+<div class="fixed bottom-16 left-1/2 -translate-x-1/2 w-full max-w-md px-4 pb-4">
+<button class="w-full flex items-center justify-center gap-2 h-14 bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400 font-bold rounded-xl cursor-not-allowed border border-slate-300 dark:border-slate-700" disabled="">
+<span>Publish</span>
+<span class="text-[10px] bg-slate-300 dark:bg-slate-700 px-2 py-0.5 rounded-full">COMING SOON</span>
+</button>
+</div>
+<!-- Bottom Navigation Bar -->
+<div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md flex gap-2 border-t border-primary/10 bg-background-light dark:bg-background-dark px-4 pb-3 pt-2 z-20">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500 dark:text-slate-400" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">home</span>
+</div>
+<p class="text-xs font-medium">Home</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500 dark:text-slate-400" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">list_alt</span>
+</div>
+<p class="text-xs font-medium">Listings</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<p class="text-xs font-medium">QA Report</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500 dark:text-slate-400" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">person</span>
+</div>
+<p class="text-xs font-medium">Profile</p>
+</a>
+</div>
+</div>
+</body></html>

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useStore from '../store/useStore'
+import HamburgerMenu from '../components/HamburgerMenu'
 
 const DEFAULT_VARIANTS = [
   { size: 'S', color: 'Blue', price: '129.99', stock: 24 },
@@ -38,7 +39,7 @@ export default function VariantsPage() {
             </button>
             <h1 className="text-xl font-bold">Manage Variants</h1>
           </div>
-          <div className="flex gap-3">
+          <div className="flex gap-3 items-center">
             <button onClick={() => navigate('/listing')} className="px-4 py-2 rounded-lg border border-primary text-primary font-medium hover:bg-primary/5">
               Back to Listing
             </button>
@@ -46,6 +47,7 @@ export default function VariantsPage() {
               <span className="material-symbols-outlined text-[20px]">check</span>
               Save & Continue
             </button>
+            <HamburgerMenu />
           </div>
         </div>
       </header>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Variant Builder - ListMate</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1ddd33",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#112113",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-background-light dark:bg-background-dark border-b border-primary/20 p-4">
+<div class="max-w-5xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center p-2 rounded-lg hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="text-xl font-bold tracking-tight">Manage Variants</h1>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 rounded-lg border border-primary text-primary font-medium hover:bg-primary/5 transition-colors">
+                    Back to Listing
+                </button>
+<button class="px-4 py-2 rounded-lg bg-primary text-background-dark font-bold hover:opacity-90 transition-opacity flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                    Save Changes
+                </button>
+</div>
+</div>
+</header>
+<main class="max-w-5xl mx-auto p-4 md:p-6 space-y-6">
+<!-- Global Toggle Section -->
+<section class="bg-primary/5 border border-primary/20 rounded-xl p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<div class="flex flex-col gap-1">
+<p class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight">Show/Hide Variants</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Toggle visibility of all variant combinations in the store</p>
+</div>
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-slate-300 dark:bg-slate-700 p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary">
+<div class="h-full w-[27px] rounded-full bg-white shadow-md"></div>
+<input checked="" class="invisible absolute" type="checkbox"/>
+</label>
+</section>
+<!-- Product Summary Header -->
+<div class="flex items-center gap-4 p-4 bg-primary/10 rounded-xl border border-primary/10">
+<div class="w-16 h-16 rounded-lg bg-cover bg-center" data-alt="Technical waterproof jacket in navy blue" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuALWmXE2gT4u-wWCw7O3FZhcydR7rDR9fwYgRkOn0YZ5xBdxYf2NZn9dvekd01JLReTJVQlUBllLkTQuECM087Qr53OvMxQlEhpWAr49M9RQG4LOzhYKgcm9fffHEGZPtJK1wbrCZZPs_prLUEzVBP6YoxsxIwblnO7uxfq4dEMLT05hYWZvrw6ht3rw0TsHVFfn1S5ufIvQq2BrtTY0h92M9D7b_DwJNO4LO6H5p4LSbGzSq2psvSDbkPhC6EJ6j8Gk0Fl2sG-L-g')"></div>
+<div>
+<h2 class="text-lg font-bold">Premium Outdoor Jacket</h2>
+<p class="text-sm text-slate-500 dark:text-slate-400">SKU Base: JK-2024-PRM</p>
+</div>
+</div>
+<!-- Variant Matrix Table -->
+<div class="overflow-x-auto bg-background-light dark:bg-background-dark border border-primary/10 rounded-xl shadow-sm">
+<table class="w-full border-collapse">
+<thead>
+<tr class="bg-primary/5 text-left border-b border-primary/20">
+<th class="p-4 font-semibold text-sm uppercase tracking-wider text-primary">Size</th>
+<th class="p-4 font-semibold text-sm uppercase tracking-wider text-primary">Color</th>
+<th class="p-4 font-semibold text-sm uppercase tracking-wider text-primary">Price ($)</th>
+<th class="p-4 font-semibold text-sm uppercase tracking-wider text-primary">Stock (Units)</th>
+<th class="p-4 font-semibold text-sm uppercase tracking-wider text-primary text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-primary/10">
+<!-- Row S -->
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="p-4 font-bold">S</td>
+<td class="p-4">
+<select class="bg-background-light dark:bg-slate-800 border-primary/20 rounded-lg text-sm w-full focus:ring-primary focus:border-primary">
+<option>Blue</option>
+<option>Black</option>
+</select>
+</td>
+<td class="p-4">
+<input class="bg-background-light dark:bg-slate-800 border-primary/20 rounded-lg text-sm w-full focus:ring-primary focus:border-primary" type="number" value="129.99"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 flex items-center justify-center rounded-full bg-primary/20 hover:bg-primary/30 text-primary">-</button>
+<input class="bg-transparent border-none text-center w-12 font-medium focus:ring-0" type="number" value="24"/>
+<button class="w-8 h-8 flex items-center justify-center rounded-full bg-primary/20 hover:bg-primary/30 text-primary">+</button>
+</div>
+</td>
+<td class="p-4 text-right">
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row M -->
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="p-4 font-bold">M</td>
+<td class="p-4">
+<select class="bg-background-light dark:bg-slate-800 border-primary/20 rounded-lg text-sm w-full focus:ring-primary focus:border-primary">
+<option>Black</option>
+<option>Blue</option>
+</select>
+</td>
+<td class="p-4">
+<input class="bg-background-light dark:bg-slate-800 border-primary/20 rounded-lg text-sm w-full focus:ring-primary focus:border-primary" type="number" value="129.99"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 flex items-center justify-center rounded-full bg-primary/20 hover:bg-primary/30 text-primary">-</button>
+<input class="bg-transparent border-none text-center w-12 font-medium focus:ring-0" type="number" value="18"/>
+<button class="w-8 h-8 flex items-center justify-center rounded-full bg-primary/20 hover:bg-primary/30 text-primary">+</button>
+</div>
+</td>
+<td class="p-4 text-right">
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row L -->
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="p-4 font-bold">L</td>
+<td class="p-4">
+<select class="bg-background-light dark:bg-slate-800 border-primary/20 rounded-lg text-sm w-full focus:ring-primary focus:border-primary">
+<option>Blue</option>
+<option>Black</option>
+</select>
+</td>
+<td class="p-4">
+<input class="bg-background-light dark:bg-slate-800 border-primary/20 rounded-lg text-sm w-full focus:ring-primary focus:border-primary" type="number" value="134.99"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 flex items-center justify-center rounded-full bg-primary/20 hover:bg-primary/30 text-primary">-</button>
+<input class="bg-transparent border-none text-center w-12 font-medium focus:ring-0" type="number" value="42"/>
+<button class="w-8 h-8 flex items-center justify-center rounded-full bg-primary/20 hover:bg-primary/30 text-primary">+</button>
+</div>
+</td>
+<td class="p-4 text-right">
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row XL -->
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="p-4 font-bold">XL</td>
+<td class="p-4">
+<select class="bg-background-light dark:bg-slate-800 border-primary/20 rounded-lg text-sm w-full focus:ring-primary focus:border-primary">
+<option>Blue</option>
+<option>Black</option>
+</select>
+</td>
+<td class="p-4">
+<input class="bg-background-light dark:bg-slate-800 border-primary/20 rounded-lg text-sm w-full focus:ring-primary focus:border-primary" type="number" value="139.99"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 flex items-center justify-center rounded-full bg-primary/20 hover:bg-primary/30 text-primary">-</button>
+<input class="bg-transparent border-none text-center w-12 font-medium focus:ring-0" type="number" value="12"/>
+<button class="w-8 h-8 flex items-center justify-center rounded-full bg-primary/20 hover:bg-primary/30 text-primary">+</button>
+</div>
+</td>
+<td class="p-4 text-right">
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Add Variant Button -->
+<div class="flex justify-center pt-2">
+<button class="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-dashed border-primary/40 text-primary font-bold hover:bg-primary/5 hover:border-primary transition-all">
+<span class="material-symbols-outlined">add_circle</span>
+                Add Variant Row
+            </button>
+</div>
+<!-- Matrix Settings -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+<div class="p-4 rounded-xl border border-primary/10 bg-primary/5">
+<h3 class="font-bold mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">auto_fix_high</span>
+                    Bulk Price Update
+                </h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Set the same price for all variants at once.</p>
+<div class="flex gap-2">
+<input class="flex-1 bg-background-light dark:bg-slate-800 border-primary/20 rounded-lg text-sm focus:ring-primary focus:border-primary" placeholder="$ 0.00" type="text"/>
+<button class="px-4 py-2 bg-primary/20 text-primary rounded-lg font-bold text-sm">Apply</button>
+</div>
+</div>
+<div class="p-4 rounded-xl border border-primary/10 bg-primary/5">
+<h3 class="font-bold mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">inventory_2</span>
+                    Bulk Stock Update
+                </h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Set global stock level for all variants.</p>
+<div class="flex gap-2">
+<input class="flex-1 bg-background-light dark:bg-slate-800 border-primary/20 rounded-lg text-sm focus:ring-primary focus:border-primary" placeholder="Quantity" type="text"/>
+<button class="px-4 py-2 bg-primary/20 text-primary rounded-lg font-bold text-sm">Apply</button>
+</div>
+</div>
+</div>
+</main>
+<footer class="p-8 text-center text-slate-500 dark:text-slate-400 text-sm">
+<p>© 2024 ListMate Inventory Systems</p>
+</footer>
+</body></html>

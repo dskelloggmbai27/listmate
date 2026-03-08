@@ -3,6 +3,7 @@ import { useDropzone } from 'react-dropzone'
 import { Link, useNavigate } from 'react-router-dom'
 import useStore from '../store/useStore'
 import ModelSelector from '../components/ModelSelector'
+import HamburgerMenu from '../components/HamburgerMenu'
 
 const MARKETPLACES = [
   { id: 'amazon',  label: 'Amazon',  logo: '/marketplaces/amazon.png' },
@@ -44,9 +45,7 @@ export default function UploadPage() {
           <img src="/logo.png" alt="ListMate" className="size-8 rounded-lg" />
           <h1 className="text-xl font-bold tracking-tight">ListMate</h1>
         </div>
-        <button className="size-10 rounded-full flex items-center justify-center bg-slate-100 dark:bg-slate-800">
-          <span className="material-symbols-outlined">account_circle</span>
-        </button>
+        <HamburgerMenu />
       </header>
 
       <main className="flex-1 max-w-2xl mx-auto w-full p-4 pb-48">

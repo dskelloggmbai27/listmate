@@ -15,6 +15,12 @@ const useStore = create((set) => ({
   jobResult: null,   // { listing, variants }
   qaResult: null,    // { risk_score, issues }
 
+  // API keys (user-supplied via Settings screen; override backend env vars)
+  apiKeys: { anthropic: '', openai: '' },
+
+  // Session listing history (accumulated during demo session)
+  listingHistory: [],
+
   // Setters
   setImages: (images) => set({ images }),
   setNotes: (notes) => set({ notes }),
@@ -22,6 +28,10 @@ const useStore = create((set) => ({
   setModelConfig: (config) => set((s) => ({ modelConfig: { ...s.modelConfig, ...config } })),
   setJobResult: (jobResult) => set({ jobResult }),
   setQaResult: (qaResult) => set({ qaResult }),
+  setApiKeys: (keys) => set((s) => ({ apiKeys: { ...s.apiKeys, ...keys } })),
+  addToHistory: (entry) => set((s) => ({
+    listingHistory: [entry, ...s.listingHistory],
+  })),
   updateListing: (patch) =>
     set((s) => ({
       jobResult: {
