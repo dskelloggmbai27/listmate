@@ -1,0 +1,9 @@
+Please review this product listing for quality issues:
+
+Title: {title}
+Bullets:
+{bullets}
+Description: {description}
+Attributes: {attributes}
+
+Analyze the listing text and product images above. Identify any issues that could lead to customer returns.

@@ -1,0 +1,6 @@
+Marketplace: {marketplace}
+
+Seller notes:
+{notes}
+
+Please analyze the product images and seller notes above. Generate a complete, optimized listing for the {marketplace} marketplace.
