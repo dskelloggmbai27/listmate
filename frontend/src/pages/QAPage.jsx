@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import useStore from '../store/useStore'
 import HamburgerMenu from '../components/HamburgerMenu'
+import BottomNav from '../components/BottomNav'
 
 const ISSUE_ICONS = {
   missing:   { icon: 'add_circle',        color: 'text-primary',      bg: 'bg-primary/20' },
@@ -109,13 +110,8 @@ export default function QAPage() {
         </div>
 
         {/* Bottom nav */}
-        <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md flex gap-2 border-t border-primary/10 bg-background-light dark:bg-background-dark px-4 pb-3 pt-2 z-20">
-          {[['home','Home'],['list_alt','Listings'],['verified_user','QA Report'],['person','Profile']].map(([icon, label], i) => (
-            <a key={icon} className={`flex flex-1 flex-col items-center gap-1 ${i === 2 ? 'text-primary' : 'text-slate-400'}`} href="#">
-              <span className={`material-symbols-outlined ${i === 2 ? 'fill-icon' : ''}`}>{icon}</span>
-              <p className="text-xs font-medium">{label}</p>
-            </a>
-          ))}
+        <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md border-t border-slate-200 dark:border-slate-800 bg-background-light dark:bg-background-dark px-4 pb-2 z-20">
+          <BottomNav />
         </div>
       </div>
     </div>

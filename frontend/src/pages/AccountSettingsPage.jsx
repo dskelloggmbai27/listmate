@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useStore from '../store/useStore'
 import HamburgerMenu from '../components/HamburgerMenu'
+import BottomNav from '../components/BottomNav'
 
 const USER = {
   name: 'Alex Rivera',
@@ -44,7 +45,7 @@ export default function AccountSettingsPage() {
         <HamburgerMenu />
       </header>
 
-      <main className="flex-1 max-w-2xl mx-auto w-full p-4 space-y-6 pb-12">
+      <main className="flex-1 max-w-2xl mx-auto w-full p-4 space-y-6 pb-28">
 
         {/* Profile card */}
         <section className="bg-white dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 p-5">
@@ -139,6 +140,10 @@ export default function AccountSettingsPage() {
           </p>
         </div>
       </main>
+
+      <div className="fixed bottom-0 left-0 right-0 bg-background-light dark:bg-background-dark border-t border-slate-200 dark:border-slate-800 px-4 pb-2">
+        <BottomNav />
+      </div>
     </div>
   )
 }

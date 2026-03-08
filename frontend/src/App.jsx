@@ -6,6 +6,7 @@ import VariantsPage from './pages/VariantsPage'
 import QAPage from './pages/QAPage'
 import PastListingsPage from './pages/PastListingsPage'
 import AccountSettingsPage from './pages/AccountSettingsPage'
+import InsightsPage from './pages/InsightsPage'
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/qa" element={<QAPage />} />
         <Route path="/history" element={<PastListingsPage />} />
         <Route path="/settings" element={<AccountSettingsPage />} />
+        <Route path="/insights" element={<InsightsPage />} />
       </Routes>
     </BrowserRouter>
   )

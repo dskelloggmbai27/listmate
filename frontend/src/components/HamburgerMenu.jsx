@@ -5,6 +5,7 @@ import useStore from '../store/useStore'
 const MENU_ITEMS = [
   { icon: 'add_circle',      label: 'New Listing',      path: '/upload',    iconClass: 'text-primary' },
   { icon: 'history',         label: 'Past Listings',    path: '/history',   iconClass: 'text-slate-400' },
+  { icon: 'bar_chart',       label: 'Insights',         path: '/insights',  iconClass: 'text-slate-400' },
   { icon: 'manage_accounts', label: 'Account Settings', path: '/settings',  iconClass: 'text-slate-400' },
 ]
 

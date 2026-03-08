@@ -1,9 +1,10 @@
 import { useCallback, useMemo } from 'react'
 import { useDropzone } from 'react-dropzone'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import useStore from '../store/useStore'
 import ModelSelector from '../components/ModelSelector'
 import HamburgerMenu from '../components/HamburgerMenu'
+import BottomNav from '../components/BottomNav'
 
 const MARKETPLACES = [
   { id: 'amazon',  label: 'Amazon',  logo: '/marketplaces/amazon.png' },
@@ -142,18 +143,7 @@ export default function UploadPage() {
           <span className="material-symbols-outlined">auto_awesome</span>
           Generate Listing
         </button>
-        <nav className="flex justify-around items-center pt-2">
-          <Link to="/upload" className="flex flex-col items-center gap-1 text-primary">
-            <span className="material-symbols-outlined">upload</span>
-            <span className="text-[10px] font-bold uppercase tracking-tighter">Upload</span>
-          </Link>
-          {[['list_alt','Listings'],['bar_chart','Insights'],['settings','Settings']].map(([icon, label]) => (
-            <span key={icon} className="flex flex-col items-center gap-1 text-slate-400">
-              <span className="material-symbols-outlined">{icon}</span>
-              <span className="text-[10px] font-bold uppercase tracking-tighter">{label}</span>
-            </span>
-          ))}
-        </nav>
+        <BottomNav />
       </div>
     </div>
   )

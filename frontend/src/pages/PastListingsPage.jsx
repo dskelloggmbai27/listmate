@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import useStore from '../store/useStore'
 import HamburgerMenu from '../components/HamburgerMenu'
+import BottomNav from '../components/BottomNav'
 
 // Hardcoded demo history — shows off variety of marketplaces + QA scores
 const HARDCODED_HISTORY = [
@@ -85,7 +86,7 @@ export default function PastListingsPage() {
         <HamburgerMenu />
       </header>
 
-      <main className="flex-1 max-w-2xl mx-auto w-full p-4 space-y-3 pb-8">
+      <main className="flex-1 max-w-2xl mx-auto w-full p-4 space-y-3 pb-28">
         {listingHistory.length > 0 && (
           <p className="text-xs font-semibold text-primary uppercase tracking-widest pt-2">This Session</p>
         )}
@@ -129,6 +130,10 @@ export default function PastListingsPage() {
           )
         })}
       </main>
+
+      <div className="fixed bottom-0 left-0 right-0 bg-background-light dark:bg-background-dark border-t border-slate-200 dark:border-slate-800 px-4 pb-2">
+        <BottomNav />
+      </div>
     </div>
   )
 }
