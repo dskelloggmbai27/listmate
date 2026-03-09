@@ -1,0 +1,28 @@
+Model Card: ListMate QA & Return Risk EngineModel
+1. Model Information
+- Description: A hybrid AI system combining a multimodal Large Language Model (LLM) reasoning layer with a deterministic, rule-based classifier.
+- Architecture / Dependencies: API-based Multimodal LLM (e.g., Gemini / GPT-4o) operating in tandem with a Python rules engine.
+- Inputs: Text strings (raw unstructured product specs), image files (3-5 seller-provided product photos), and the generated listing copy.
+- Outputs: A structured JSON object containing a quantitative "Return Risk Score" and a text-based "Fix-It Checklist".
+
+2. Intended Use & Limitations
+- Primary Task: To act as a quality assurance gatekeeper that catches preventable listing mistakes (ambiguous descriptions, missing specs, variant mismatches) before publication.
+- Intended Users: Small to mid-sized e-commerce marketplace sellers on platforms like Amazon, Shopify, and Etsy.
+- Out-of-Scope Use: This model is not intended to provide dynamic pricing adjustments or manage live inventory levels.
+
+3. Data
+- Training Data: The MVP utilizes a pre-trained foundation multimodal model; no custom fine-tuning dataset was used for this build.
+- Inference Data: At runtime, the model relies exclusively on the unstructured text and images provided by the user.
+- Limitations: The model's reasoning is highly dependent on the quality and resolution of the uploaded images. If a physical attribute is obscured or not explicitly stated in the raw text, the model cannot confidently verify it.
+
+4. Evaluation Metrics
+- Metrics Used: Performance is evaluated using the QA Issue Rate (the frequency of successfully catching missing/ambiguous specs per SKU) and the Listing Completeness Rate (ensuring all marketplace-required attributes are filled).
+- Interpreting Results: In the context of ListMate, a "good" score means the model correctly identifies all missing critical fields (e.g., flagging that dimensions are missing) without generating false positives or hallucinating attributes not present in the source inputs.
+
+5. Performance, Biases, & Edge Cases
+- Strengths: The model excels at separating "known" facts from "missing" facts, prompting the seller to confirm details rather than inventing them.
+- Failure Modes / Edge Cases: The model struggles with highly technical or niche products where visual identification of specs (e.g., exact metal alloys, specific thread counts, internal hardware compatibility) is impossible without specialized, structured metadata.
+
+6. Improvement Path
+- Current Mitigation: To improve safety and accuracy, we implemented a strict rule-based flagging system alongside the LLM to prevent the model from hallucinating missing data.
+- Next Priorities: Future iterations will integrate directly with marketplace APIs to monitor post-publish returns tagged specifically as "not as described" to create a continuous learning feedback loop.
