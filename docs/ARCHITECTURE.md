@@ -266,16 +266,6 @@ ModelSelector (Frontend)
     ├── provider: 'anthropic' ──▶ model: claude-*  ──▶ Anthropic SDK
     ├── provider: 'openai'    ──▶ model: gpt-*     ──▶ OpenAI SDK
     └── provider: 'custom'
-            │
-            ├── model: 'custom-gpt5'   ──▶ resolveModel()
-            │                                   │
-            │                         provider: 'openai'
-            │                         model:    'gpt-4.1'  (Fine-tuned GPT 5 ✦)
-            │
-            └── model: 'custom-gemma3' ──▶ resolveModel()
-                                                │
-                                      provider: 'anthropic'
-                                      model:    'claude-sonnet-4-6'  (Post-trained Gemma 3 ✦)
 
 ✦ Proprietary fine-tunes served via provider API endpoints
 ```
