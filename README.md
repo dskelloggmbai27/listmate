@@ -10,6 +10,8 @@
   ![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?style=flat-square&logo=fastapi)
   ![Claude](https://img.shields.io/badge/Claude-Sonnet%204.6-CC785C?style=flat-square)
   ![Tailwind](https://img.shields.io/badge/Tailwind-v3-06B6D4?style=flat-square&logo=tailwindcss)
+
+  **[Model Card](docs/MODEL_CARD.md)** &nbsp;·&nbsp; **[System Architecture](docs/ARCHITECTURE.md)**
 </div>
 
 ---
